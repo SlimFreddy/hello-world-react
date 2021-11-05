@@ -16,8 +16,19 @@ function App() {
     setMessages([...newMessages]);
   };
 
+  const removeMessage = (index: number) => {
+    const newMessages = messages;
+    newMessages.splice(index, 1);
+    setMessages([...newMessages]);
+  };
+
   const renderMessageList = messages.map((message, index) => {
-    return <p key={index}>{index + ". " + message}</p>;
+    return (
+      <p key={index}>
+        {index + ". " + message}
+        <button onClick={() => removeMessage(index)}>x</button>
+      </p>
+    );
   });
 
   return (
